@@ -1,9 +1,9 @@
-name: Python CI with Docker
+name: Python CI/CD with Docker (Local Deploy)
 
 on: [push]
 
 jobs:
-  test:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -13,5 +13,5 @@ jobs:
       - name: Build Docker image
         run: docker build -t ci-demo .
 
-      - name: Run Docker container
-        run: docker run --rm ci-demo
+      - name: Run Docker container locally
+        run: docker run -d --name ci-demo -p 5000:5000 ci-demo:latest
